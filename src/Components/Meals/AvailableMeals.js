@@ -28,6 +28,12 @@ const DUMMY_MEALS = [
         description: 'Healthy...and green...',
         price: 180.99,
     },
+    {
+        id: 'm5',
+        name: 'Ice Cream',
+        description: 'frozen dairy food',
+        price: 50.99
+    }
 ];
 
 function AvailableMeals() {
