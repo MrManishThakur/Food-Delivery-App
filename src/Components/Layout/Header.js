@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import classes from './Header.module.css'
 import HeaderCartButton from './HeaderCartButton'
-import meals from '../../Assets/meals.jpg'
+import mealspic from '../../Assets/meals-pic.webp'
 function Header(props) {
   return (
     <Fragment>
@@ -10,7 +10,7 @@ function Header(props) {
             <HeaderCartButton onClick={props.onShowCart}/>
         </header>
         <div className={classes['main-image']}>
-            <img src={meals} alt="list of meals" />
+            <img src={mealspic} alt="list of meals" />
         </div>
     </Fragment>
   )
