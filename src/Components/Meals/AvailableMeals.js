@@ -7,15 +7,39 @@ import { useEffect } from "react";
 
 function AvailableMeals() {
   const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [httError, setHttpError] = useState();
   useEffect(() => {
-    getMealsData();
+    getMealsData().catch((error)=>{
+      setIsLoading(false);
+      setHttpError(error.message);
+    })
   }, []);
-  const getMealsData = () => {
-    fetch("https://meals-data-api.herokuapp.com/meals")
-      .then((res) => res.json())
-      .then((data) => setMeals(data))
-      .catch((error) => console.log(error));
+  const getMealsData = async() => {
+    const response = await fetch("https://meals-data-api.herokuapp.com/meals");
+    if(!response.ok){
+      throw new Error("Something went wrong!");
+    }
+
+    const responseData = await response.json();
+    setMeals(responseData);
+    setIsLoading(false);
   };
+
+  if(isLoading){
+    return (
+      <section className={classes.MealsLoading}>
+        <p>Loading meals...</p>
+      </section>
+    )
+  }
+  if(httError){
+    return (
+      <section className={classes.MealsError}>
+        <p>{httError}</p>
+      </section>
+    )
+  }
   const mealsList = meals.map((meal) => (
     <MealItem
       key={meal._id}
