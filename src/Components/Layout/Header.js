@@ -7,7 +7,7 @@ function Header(props) {
   return (
     <Fragment>
         <header className={classes.header}>
-            <h1>Food Delivery Site</h1>
+            <h1>Your Meals</h1>
             <Search/>
             <HeaderCartButton onClick={props.onShowCart}/>
         </header>

@@ -1,6 +1,7 @@
 .div{
     position: relative;
     margin-bottom: 42px;
+    margin-right: 250px;
 }
 .search {
     position: fixed;
